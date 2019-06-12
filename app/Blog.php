@@ -30,9 +30,9 @@ class Blog extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('filterPublish', function (Builder $builder) {
-            $builder->where('is_published', '==', 1);
-        });
+        // static::addGlobalScope('filterPublish', function (Builder $builder) {
+        //     $builder->where('is_published', '==', 1);
+        // });
 
     }
 
