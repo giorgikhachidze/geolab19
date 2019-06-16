@@ -16,8 +16,8 @@ class AddNewColumns extends Migration
         Schema::table('posts', function (Blueprint $table) {
             
             $table->string("add_new_column")->nullable();
-            $table->string("name_test", 23)->change();
-            $table->renameColumn("name_test", "name");
+            $table->string("name_", 23)->change();
+            $table->renameColumn("name_", "name");
             $table->dropColumn('publish_date');
         });
     }
