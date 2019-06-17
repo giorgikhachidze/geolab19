@@ -125,9 +125,32 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog = Blog::find($id);
-        $blog->delete();
+        $blog = Blog::find($id)
+            ->delete();
 
-        return redirect()->back()->with('success','პოსტი წარმატებით წაიშალა');
+        return redirect()->back()->with('success','პოსტი წარმატებით წაიშალა.');
+    }
+
+    public function trash()
+    {
+        $posts = Blog::onlyTrashed()->paginate(5);
+
+        return view('admin.blog.trash', compact('posts'));
+    }
+
+    public function trashStore($id)
+    {
+        $blog = Blog::onlyTrashed()->find($id)
+            ->restore();
+
+        return redirect()->back()->with('success','პოსტი წარმატებით იქნა აღდგენილი.');
+    }
+
+    public function trashDestroy($id)
+    {
+        $blog = Blog::onlyTrashed()->find($id)
+            ->forceDelete();
+
+        return redirect()->back()->with('success','პოსტი წარმატებით წაიშალა სამუდამოდ.');
     }
 }

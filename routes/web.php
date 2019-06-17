@@ -15,8 +15,11 @@ Route::namespace("Admin")->name("admin.")->prefix("admin")->middleware(["auth","
 
     Route::get("blog/index", "BlogController@index")->name('blog.index');
     Route::get("blog/create", "BlogController@create")->name('blog.create');
+    Route::get("blog/trash", "BlogController@trash")->name("blog.trash");
     Route::post("blog/store", "BlogController@store")->name("blog.store");
     Route::post("blog/{id}/destroy", "BlogController@destroy")->name("blog.destroy");
+    Route::post("blog/{id}/trashStore", "BlogController@trashStore")->name("blog.trashStore");
+    Route::post("blog/{id}/trashDestroy", "BlogController@trashDestroy")->name("blog.trashDestroy");
 
     Route::get("/dashboard", function (){
 

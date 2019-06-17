@@ -5,10 +5,9 @@
 
 
     <div class="row">
-        @include('admin.partials.alerts')
-
         <!-- left column -->
         <div class="col-md-12">
+        @include('admin.partials.alerts')
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">

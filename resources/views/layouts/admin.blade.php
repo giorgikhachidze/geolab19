@@ -198,6 +198,11 @@
             <i class="fa fa-file-text"></i> <span>პოსტების სია</span>
           </a>
         </li>
+        <li class="{{ (request()->is('admin/blog/trash')) ? 'active' : '' }}">
+          <a href="{{ route('admin.blog.trash') }}">
+            <i class="fa fa-trash" aria-hidden="true"></i> <span>წაშლილი პოსტები</span>
+          </a>
+        </li>
       </ul>
     </section>
   </aside>
