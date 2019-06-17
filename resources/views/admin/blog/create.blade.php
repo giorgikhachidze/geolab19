@@ -4,18 +4,8 @@
 @section("content")
 
 
-<div class="row">
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
+    <div class="row">
+        @include('admin.partials.alerts')
 
         <!-- left column -->
         <div class="col-md-12">
@@ -82,7 +72,7 @@
         </div>
 
         <!--/.col (right) -->
-      </div>
+    </div>
 
 @endsection
 
@@ -97,9 +87,6 @@
     $('[data-mask]').inputmask();
 
   })
-
-  
-
 </script>
 
 @endsection

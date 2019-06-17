@@ -17,7 +17,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Blog::paginate(5);
+
+        return view('admin.blog.index', compact('posts'));
     }
 
     /**
@@ -123,6 +125,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blog::find($id);
+        $blog->delete();
+
+        return redirect()->back()->with('success','პოსტი წარმატებით წაიშალა');
     }
 }

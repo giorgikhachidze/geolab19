@@ -20,7 +20,7 @@
 
   <link rel="stylesheet" href="{{ asset('admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
-  
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -64,7 +64,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -135,13 +135,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -183,12 +183,21 @@
   </header>
 
   <aside class="main-sidebar">
-    
+
     <section class="sidebar">
 
       <ul class="sidebar-menu" data-widget="tree">
-
-        <li><a href="#"><i class="fa fa-book"></i> <span>test</span></a></li>
+        <li class="header">მთავარი მენიუ</li>
+        <li class="{{ (request()->is('admin/dashboard')) ? 'active' : '' }}">
+          <a href="{{ route('admin.dashboard') }}">
+            <i class="fa fa-dashboard"></i> <span>ხელსაწყოთა პანელი</span>
+          </a>
+        </li>
+        <li class="{{ (request()->is('admin/blog/index')) ? 'active' : '' }}">
+          <a href="{{ route('admin.blog.index') }}">
+            <i class="fa fa-file-text"></i> <span>პოსტების სია</span>
+          </a>
+        </li>
       </ul>
     </section>
   </aside>
@@ -200,9 +209,9 @@
     @yield("content")
 
     </section>
-    
+
   </div>
-  
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0

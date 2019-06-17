@@ -13,8 +13,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::namespace("Admin")->name("admin.")->prefix("admin")->middleware(["auth","isAdmin"])->group(function(){
 
-    Route::get("blog/create", "BlogController@create");
+    Route::get("blog/index", "BlogController@index")->name('blog.index');
+    Route::get("blog/create", "BlogController@create")->name('blog.create');
     Route::post("blog/store", "BlogController@store")->name("blog.store");
+    Route::post("blog/{id}/destroy", "BlogController@destroy")->name("blog.destroy");
 
     Route::get("/dashboard", function (){
 
